@@ -22,7 +22,18 @@ import androidx.compose.ui.unit.*
 import com.hal.myawswatch.ui.theme.AWSOrangeColor
 import com.hal.myawswatch.ui.theme.MyAWSWatchTheme
 
+/**
+ * MainActivityクラス
+ * */
 class MainActivity : ComponentActivity() {
+    /**
+     * アクティビティのライフサイクル内で初めて呼び出されるメソッド。
+     *
+     * このメソッドでは、[MyAWSWatchTheme] を使用してUIのテーマを適用します。
+     * また、[Surface] コンテナを使用してテーマからの背景色を適用し、[Drawer] 関数を呼び出してUIの内容をレンダリングします。
+     *
+     * @param savedInstanceState アクティビティの前のインスタンスの状態情報。初回起動時はnull。
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -39,6 +50,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * 本画面全体の描画処理
+ * */
 @Composable
 fun Drawer() {
     Column(modifier = Modifier.fillMaxSize()){
@@ -47,6 +61,9 @@ fun Drawer() {
     }
 }
 
+/**
+ * プレビュー処理
+ * */
 @Preview()
 @Composable
 fun GreetingPreview() {
@@ -55,6 +72,9 @@ fun GreetingPreview() {
     }
 }
 
+/**
+ * 本画面のヘッダ部分の描画処理
+ * */
 @Composable
 fun Header(){
     Column(
