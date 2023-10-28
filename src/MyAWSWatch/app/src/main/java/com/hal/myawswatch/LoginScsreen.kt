@@ -80,6 +80,9 @@ fun LightThemePreview() {
     }
 }
 
+/**
+ * プレビュー(Dark Theme)処理
+ * */
 @Preview(name = "Dark Theme", showBackground = true)
 @Composable
 fun DarkThemePreview(){
