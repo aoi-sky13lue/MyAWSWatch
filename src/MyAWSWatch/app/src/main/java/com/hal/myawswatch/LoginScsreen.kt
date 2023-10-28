@@ -166,7 +166,7 @@ fun UserOptionArea(){
             Checkbox(checked = false,
                 onCheckedChange = {},
                 colors = CheckboxDefaults.colors(
-                checkedColor = MaterialTheme.colorScheme.primary,
+                    checkedColor = MaterialTheme.colorScheme.primary,
                     uncheckedColor = MaterialTheme.colorScheme.primary)
             )
             Spacer(modifier = Modifier.width(8.dp))
