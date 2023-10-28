@@ -70,12 +70,20 @@ fun Drawer() {
 }
 
 /**
- * プレビュー処理
+ * プレビュー(Light Theme)処理
  * */
-@Preview
+@Preview(name = "Light Theme", showBackground = true)
 @Composable
-fun GreetingPreview() {
-    MyAWSWatchTheme {
+fun LightThemePreview() {
+    MyAWSWatchTheme(darkTheme = false) {
+        Drawer()
+    }
+}
+
+@Preview(name = "Dark Theme", showBackground = true)
+@Composable
+fun DarkThemePreview(){
+    MyAWSWatchTheme(darkTheme = true) {
         Drawer()
     }
 }
