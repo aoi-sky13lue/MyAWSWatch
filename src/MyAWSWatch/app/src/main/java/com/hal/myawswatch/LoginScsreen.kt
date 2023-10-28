@@ -106,6 +106,9 @@ fun Header(){
     }
 }
 
+/**
+ * 本画面のコンテンツ部分の描画処理
+ * */
 @Composable
 fun Contents(){
     Spacer(modifier = Modifier.height(32.dp))
@@ -116,6 +119,9 @@ fun Contents(){
     LoginArea()
 }
 
+/**
+ * ユーザー情報入力部の描画処理
+ * */
 @Composable
 fun UserFieldArea(){
     Column(
@@ -129,6 +135,13 @@ fun UserFieldArea(){
     }
 }
 
+/**
+ * アイコン及びテキストフィールドの描画処理
+ * TODO: この関数は後々共通モジュールに移動する
+ *
+ * @param iconId アイコンのリソースID
+ * @param placeholderText テキストフィールドのプレースホルダー用文字列
+ * */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserInputField(iconId: Int, placeholderText: String){
@@ -151,6 +164,10 @@ fun UserInputField(iconId: Int, placeholderText: String){
             ))
     }
 }
+
+/**
+ * ユーザーが任意で選択できるオプションエリアの描画処理
+ * */
 @Composable
 fun UserOptionArea(){
     Column(
@@ -175,6 +192,9 @@ fun UserOptionArea(){
     }
 }
 
+/**
+ * ログインボタン部の描画処理
+ * */
 @Composable
 fun LoginArea(){
     Column(Modifier.fillMaxWidth(),
