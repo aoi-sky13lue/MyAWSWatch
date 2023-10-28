@@ -11,8 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -20,6 +26,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import com.hal.myawswatch.ui.theme.AWSOrangeColor
+import com.hal.myawswatch.ui.theme.ForLine
 import com.hal.myawswatch.ui.theme.MyAWSWatchTheme
 
 /**
@@ -57,14 +64,15 @@ class MainActivity : ComponentActivity() {
 fun Drawer() {
     Column(modifier = Modifier.fillMaxSize()){
         Header()
-        Divider(color = Color.Gray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp))
+        Divider(color = Color.Gray, thickness = 1.5.dp, modifier = Modifier.padding(vertical = 32.dp))
+        Contents()
     }
 }
 
 /**
  * プレビュー処理
  * */
-@Preview()
+@Preview
 @Composable
 fun GreetingPreview() {
     MyAWSWatchTheme {
@@ -95,5 +103,89 @@ fun Header(){
             Spacer(modifier = Modifier.width(8.dp))
             Text(text = "Login", style = TextStyle(fontSize = 24.sp))
         }
+    }
+}
+
+@Composable
+fun Contents(){
+    Spacer(modifier = Modifier.height(32.dp))
+    UserFieldArea()
+    Spacer(modifier = Modifier.height(36.dp))
+    UserOptionArea()
+    Spacer(modifier = Modifier.height(36.dp))
+    LoginArea()
+}
+
+@Composable
+fun UserFieldArea(){
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        UserInputField(R.drawable.ic_login_screen_email, placeholderText = "Enter your email")
+        Spacer(modifier = Modifier.height(24.dp))
+        UserInputField(R.drawable.ic_login_screen_password, placeholderText = "Enter your password")
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UserInputField(iconId: Int, placeholderText: String){
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center, // この行を追加
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(painter = painterResource(id = iconId),
+            contentDescription = null,
+            modifier = Modifier.size(36.dp))
+        Spacer(modifier = Modifier.width(16.dp))
+        OutlinedTextField(value = "",
+            onValueChange = {},
+            placeholder = { Text(placeholderText) },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.primary,
+                containerColor = ForLine,
+            ))
+    }
+}
+@Composable
+fun UserOptionArea(){
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center, // この行を追加
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Checkbox(checked = false,
+                onCheckedChange = {},
+                colors = CheckboxDefaults.colors(
+                checkedColor = MaterialTheme.colorScheme.primary,
+                    uncheckedColor = MaterialTheme.colorScheme.primary)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Remember Login Info")
+        }
+    }
+}
+
+@Composable
+fun LoginArea(){
+    Column(Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Button(
+            onClick = { /*TODO*/ },
+            Modifier.width(325.dp),) {
+            Text(text = "Login")
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = "Forget Login Info?")
     }
 }
