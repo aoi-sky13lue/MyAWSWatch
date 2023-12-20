@@ -1,5 +1,6 @@
 package com.hal.myawswatch.splash
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,30 +17,64 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.hal.myawswatch.R
+import com.hal.myawswatch.login.LoginActivity
 import com.hal.myawswatch.splash.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * Splashクラス
+ *
+ * @author aoi
  * */
 class Splash : ComponentActivity() {
+    private val splashDurationTimeMs = 3000L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SysUiUtils().hideSystemBars(window)
         setContent {
-            MyAWSWatchTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    DrawSplash()
-                }
-            }
+            Draw()
+        }
+        goLoginActivity()
+    }
+
+    /**
+     * ログイン画面への遷移処理
+     *
+     * @author aoi
+     * */
+    private fun goLoginActivity() {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(splashDurationTimeMs)
+            val intent = Intent(this@Splash, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            //システムバーの表示化は遷移先のLogin.kt内で行う
         }
     }
 }
 
+/**
+ * 画面描画処理
+ *
+ * @author aoi
+ * */
+@Composable
+fun Draw(){
+    MyAWSWatchTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            DrawSplash()
+        }
+    }
+}
 /**
  * プレビュー(Light Theme)処理
  *

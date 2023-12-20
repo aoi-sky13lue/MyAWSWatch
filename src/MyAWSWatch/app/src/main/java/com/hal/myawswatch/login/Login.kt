@@ -15,7 +15,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -29,6 +28,7 @@ import com.hal.myawswatch.R
 import com.hal.myawswatch.login.ui.theme.AWSOrangeColor
 import com.hal.myawswatch.login.ui.theme.ForLine
 import com.hal.myawswatch.login.ui.theme.MyAWSWatchTheme
+import com.hal.myawswatch.utils.SysUiUtils
 
 /**
  * LoginActivityクラス
@@ -44,6 +44,9 @@ class LoginActivity : ComponentActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //スプラッシュ画面にてシステムバーを非表示にしたため戻す
+        //スプラッシュ画面側で表示を戻すと、一瞬描画が乱れるためこちらで行う
+        SysUiUtils().showSystemBars(window)
         setContent {
             MyAWSWatchTheme {
                 // A surface container using the 'background' color from the theme
@@ -154,7 +157,6 @@ fun UserFieldArea(){
  * @param iconId アイコンのリソースID
  * @param placeholderText テキストフィールドのプレースホルダー用文字列
  * */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserInputField(iconId: Int, placeholderText: String){
     Row(
