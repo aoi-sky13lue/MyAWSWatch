@@ -30,9 +30,9 @@ import com.hal.myawswatch.ui.theme.ForLine
 import com.hal.myawswatch.ui.theme.MyAWSWatchTheme
 
 /**
- * MainActivityクラス
+ * LoginActivityクラス
  * */
-class MainActivity : ComponentActivity() {
+class LoginActivity : ComponentActivity() {
     /**
      * アクティビティのライフサイクル内で初めて呼び出されるメソッド。
      *
@@ -83,7 +83,7 @@ fun LightThemePreview() {
 /**
  * プレビュー(Dark Theme)処理
  * */
-@Preview(name = "Dark Theme", showBackground = true)
+@Preview(name = "Dark Theme", showBackground = false)
 @Composable
 fun DarkThemePreview(){
     MyAWSWatchTheme(darkTheme = true) {
