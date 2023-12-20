@@ -54,7 +54,7 @@ class LoginActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Drawer()
+                    Draw()
                 }
             }
         }
@@ -65,7 +65,7 @@ class LoginActivity : ComponentActivity() {
  * 本画面全体の描画処理
  * */
 @Composable
-fun Drawer() {
+fun Draw() {
     Column(modifier = Modifier.fillMaxSize()){
         Header()
         Divider(color = Color.Gray, thickness = 1.5.dp, modifier = Modifier.padding(vertical = 32.dp))
@@ -80,7 +80,7 @@ fun Drawer() {
 @Composable
 fun LightThemePreview() {
     MyAWSWatchTheme(darkTheme = false) {
-        Drawer()
+        Draw()
     }
 }
 
@@ -91,7 +91,7 @@ fun LightThemePreview() {
 @Composable
 fun DarkThemePreview(){
     MyAWSWatchTheme(darkTheme = true) {
-        Drawer()
+        Draw()
     }
 }
 
