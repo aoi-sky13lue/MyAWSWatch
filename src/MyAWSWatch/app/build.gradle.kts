@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     val lottieVersion = "6.2.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
