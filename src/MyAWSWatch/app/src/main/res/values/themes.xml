@@ -2,4 +2,7 @@
 <resources>
 
     <style name="Theme.MyAWSWatch" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Splash" parent="android:Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowSplashScreenBackground">@color/splash_base_color</item>
+    </style>
 </resources>
