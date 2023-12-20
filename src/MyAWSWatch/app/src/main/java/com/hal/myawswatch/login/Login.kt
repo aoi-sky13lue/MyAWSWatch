@@ -18,7 +18,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -169,11 +169,14 @@ fun UserInputField(iconId: Int, placeholderText: String){
         OutlinedTextField(value = "",
             onValueChange = {},
             placeholder = { Text(placeholderText) },
-            colors = TextFieldDefaults.outlinedTextFieldColors(
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = ForLine,
+                unfocusedContainerColor = ForLine,
+                disabledContainerColor = ForLine,
                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                 unfocusedBorderColor = MaterialTheme.colorScheme.primary,
-                containerColor = ForLine,
-            ))
+            )
+        )
     }
 }
 
