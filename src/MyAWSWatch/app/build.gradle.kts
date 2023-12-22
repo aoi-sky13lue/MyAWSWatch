@@ -50,8 +50,6 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     val lottieVersion = "6.2.0"
     val coroutineVersion = "1.3.9"
     val coreKtxVersion = "1.9.0"
@@ -61,6 +59,7 @@ dependencies {
     val extJUnitVersion = "1.1.5"
     val espressoVersion = "3.5.1"
 
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.core:core-ktx:$coreKtxVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleRuntimeVersion")
     implementation("androidx.activity:activity-compose:$activityComposeVersion")
@@ -76,6 +75,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
