@@ -36,7 +36,7 @@ class LoginActivity : ComponentActivity() {
      * アクティビティのライフサイクル内で初めて呼び出されるメソッド。
      *
      * このメソッドでは、[MyAWSWatchTheme] を使用してUIのテーマを適用します。
-     * また、[Surface] コンテナを使用してテーマからの背景色を適用し、[Drawer] 関数を呼び出してUIの内容をレンダリングします。
+     * また、[Surface] コンテナを使用してテーマからの背景色を適用し、[Draw] 関数を呼び出してUIの内容をレンダリングします。
      *
      * @param savedInstanceState アクティビティの前のインスタンスの状態情報。初回起動時はnull。
      */
@@ -162,7 +162,6 @@ fun UserFieldArea(){
  * アイコン及びテキストフィールドの描画処理
  * TODO: この関数は後々共通モジュールに移動する
  *
- * @param iconId アイコンのリソースID
  * @param placeholderText テキストフィールドのプレースホルダー用文字列
  * */
 @Composable
