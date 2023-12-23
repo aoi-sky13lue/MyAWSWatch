@@ -21,6 +21,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -106,12 +108,18 @@ fun DarkThemePreview(){
 fun Header(){
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp)
+        modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp),
     ){
         Text(text = "Sign in to your account",
             style = TextStyle(fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary))
+                color = MaterialTheme.colorScheme.primary,
+                shadow = Shadow(
+                    color = MaterialTheme.colorScheme.onBackground,
+                    offset = Offset(4f, 4f),
+                    blurRadius = 8f
+                )
+            ))
     }
 }
 
