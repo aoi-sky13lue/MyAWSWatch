@@ -19,6 +19,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -27,6 +29,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hal.myawswatch.login.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
 
@@ -107,7 +110,9 @@ fun DarkThemePreview(){
 fun Header(){
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 48.dp),
     ){
         Text(text = "Sign in to your account",
             style = TextStyle(fontSize = 36.sp,
@@ -151,17 +156,26 @@ fun Contents(){
 
 /**
  * ユーザー情報入力部の描画処理
+ *
+ * @param vm ログイン画面のViewModel
  * */
 @Composable
-fun UserFieldArea(){
+fun UserFieldArea(vm: LoginViewModel = viewModel()){
+    val email by vm.email.collectAsState()
+    val password by vm.password.collectAsState()
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        UserInputField(placeholderText = "Email")
+        UserInputField(placeholderText = "Email",
+            changeAction = {vm.setEmail(it)},
+            value = email)
         Spacer(modifier = Modifier.height(24.dp))
-        UserInputField(placeholderText = "Password")
+        UserInputField(placeholderText = "Password",
+            changeAction = {vm.setPassword(it)},
+            value = password)
     }
 }
 
@@ -170,15 +184,19 @@ fun UserFieldArea(){
  * TODO: この関数は後々共通モジュールに移動する
  *
  * @param placeholderText テキストフィールドのプレースホルダー用文字列
+ * @param changeAction テキストフィールドの値変更時に呼び出される処理
+ * @param value テキストフィールドの値
  * */
 @Composable
-fun UserInputField(placeholderText: String){
+fun UserInputField(placeholderText: String,
+                   changeAction: (String) -> Unit,
+                   value: String){
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        OutlinedTextField(value = "",
-            onValueChange = {},
+        OutlinedTextField(value = value,
+            onValueChange = {changeAction(it)},
             Modifier.fillMaxWidth(0.95f),
             placeholder = { Text(placeholderText) },
             shape = RoundedCornerShape(16.dp),
