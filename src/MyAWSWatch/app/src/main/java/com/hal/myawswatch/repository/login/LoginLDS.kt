@@ -46,4 +46,13 @@ class LoginLDS @Inject constructor(){
     fun getIsSavingCredential(): Boolean {
         return isSavingCredential
     }
+
+    /**
+     * ログイン情報を保存する
+     *
+     * @return 保存結果(成功:true/失敗:false)
+     * */
+    fun saveLoginCredential(): Boolean {
+        return true
+    }
 }

@@ -63,4 +63,13 @@ class LoginRepository @Inject constructor(
 
         return loginRDS.loginToGCPByOAuth(email, password)
     }
+
+    /**
+     * ログイン情報を保存する
+     *
+     * @return 保存結果(成功:true/失敗:false)
+     * */
+    fun saveLoginCredential() : Boolean{
+        return loginLDS.saveLoginCredential()
+    }
 }
