@@ -1,6 +1,9 @@
 plugins {
+    kotlin("kapt")
+
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -59,6 +62,7 @@ dependencies {
     val extJUnitVersion = "1.1.5"
     val espressoVersion = "3.5.1"
     val viewModelComposeVersion = "2.5.1"
+    val hiltVersion = "2.44"
 
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.core:core-ktx:$coreKtxVersion")
@@ -72,6 +76,8 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:$lottieVersion")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelComposeVersion")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
     testImplementation("junit:junit:$jUnitVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJUnitVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
