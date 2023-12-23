@@ -50,4 +50,15 @@ class LoginRepository @Inject constructor(
     fun getIsSavingLoginCredentials(): Boolean {
         return loginLDS.getIsSavingCredential()
     }
+
+    /**
+     * GCPへログインする
+     *
+     * @return ログイン結果(成功:true/失敗:false)
+     * */
+    fun loginToGCP(): Boolean{
+        val email = getLoginCredentials().email
+        val password = getLoginCredentials().password
+        return loginRDS.loginToGCPByOAuth(email, password)
+    }
 }

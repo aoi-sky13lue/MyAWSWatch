@@ -70,7 +70,11 @@ class LoginViewModel @Inject constructor(
      * ログインボタン押下時の処理
      * */
     fun onLoginButtonClicked() {
-        val loginCredential = loginRepository.getLoginCredentials()
-        val isSavingCredential = loginRepository.getIsSavingLoginCredentials()
+        val loginResult = loginRepository.loginToGCP()
+        if(loginResult) {
+            // ログイン成功時の処理
+        } else {
+            // ログイン失敗時の処理
+        }
     }
 }
