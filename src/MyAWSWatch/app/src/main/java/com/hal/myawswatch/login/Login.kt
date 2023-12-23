@@ -3,30 +3,28 @@ package com.hal.myawswatch.login
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
-import com.hal.myawswatch.R
-import com.hal.myawswatch.login.ui.theme.AWSOrangeColor
-import com.hal.myawswatch.login.ui.theme.ForLine
 import com.hal.myawswatch.login.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
 
@@ -66,10 +64,16 @@ class LoginActivity : ComponentActivity() {
  * */
 @Composable
 fun Draw() {
-    Column(modifier = Modifier.fillMaxSize()){
+    Column(modifier = Modifier.fillMaxSize()
+        .background(MaterialTheme.colorScheme.background)){
         Header()
-        Divider(color = Color.Gray, thickness = 1.5.dp, modifier = Modifier.padding(vertical = 32.dp))
-        Contents()
+        Divider(color = MaterialTheme.colorScheme.onSurface, thickness = 1.5.dp)
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Contents()
+        }
     }
 }
 
@@ -100,24 +104,14 @@ fun DarkThemePreview(){
  * */
 @Composable
 fun Header(){
-    Column(
-        modifier = Modifier
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Icon(painter = painterResource(id = R.drawable.ic_login_screen_user), contentDescription = null, modifier = Modifier.size(64.dp))
-        Spacer(modifier = Modifier.height(16.dp))
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
-        ){
-            Text(text = "AWS", style = TextStyle(fontSize = 24.sp, color = AWSOrangeColor))
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "User", style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold))
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Login", style = TextStyle(fontSize = 24.sp))
-        }
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp)
+    ){
+        Text(text = "Sign in to your account",
+            style = TextStyle(fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary))
     }
 }
 
@@ -126,12 +120,25 @@ fun Header(){
  * */
 @Composable
 fun Contents(){
-    Spacer(modifier = Modifier.height(32.dp))
-    UserFieldArea()
-    Spacer(modifier = Modifier.height(36.dp))
-    UserOptionArea()
-    Spacer(modifier = Modifier.height(36.dp))
-    LoginArea()
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .background(MaterialTheme.colorScheme.surface),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Spacer(modifier = Modifier.height(32.dp))
+            UserFieldArea()
+            Spacer(modifier = Modifier.height(36.dp))
+            UserOptionArea()
+            Spacer(modifier = Modifier.height(36.dp))
+            LoginArea()
+        }
+    }
 }
 
 /**
@@ -144,9 +151,9 @@ fun UserFieldArea(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        UserInputField(R.drawable.ic_login_screen_email, placeholderText = "Enter your email")
+        UserInputField(placeholderText = "Enter your email")
         Spacer(modifier = Modifier.height(24.dp))
-        UserInputField(R.drawable.ic_login_screen_password, placeholderText = "Enter your password")
+        UserInputField(placeholderText = "Enter your password")
     }
 }
 
@@ -158,24 +165,21 @@ fun UserFieldArea(){
  * @param placeholderText テキストフィールドのプレースホルダー用文字列
  * */
 @Composable
-fun UserInputField(iconId: Int, placeholderText: String){
+fun UserInputField(placeholderText: String){
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center, // この行を追加
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(painter = painterResource(id = iconId),
-            contentDescription = null,
-            modifier = Modifier.size(36.dp))
-        Spacer(modifier = Modifier.width(16.dp))
         OutlinedTextField(value = "",
             onValueChange = {},
+            Modifier.fillMaxWidth(0.95f),
             placeholder = { Text(placeholderText) },
+            shape = RoundedCornerShape(16.dp),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = ForLine,
-                unfocusedContainerColor = ForLine,
-                disabledContainerColor = ForLine,
-                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                focusedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                focusedBorderColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 unfocusedBorderColor = MaterialTheme.colorScheme.primary,
             )
         )
@@ -204,7 +208,7 @@ fun UserOptionArea(){
                     uncheckedColor = MaterialTheme.colorScheme.primary)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Remember Login Info")
+            Text(text = "Save Your Account", color = MaterialTheme.colorScheme.primary)
         }
     }
 }
@@ -217,12 +221,19 @@ fun LoginArea(){
     Column(Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Button(
+        ElevatedButton(
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 16.dp,
+                pressedElevation = 32.dp,
+                disabledElevation = 0.dp
+            ),
+            modifier = Modifier.fillMaxWidth(0.9f),
             onClick = { /*TODO*/ },
-            Modifier.width(325.dp),) {
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onSecondary
+            ),) {
             Text(text = "Login")
         }
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = "Forget Login Info?")
     }
 }
