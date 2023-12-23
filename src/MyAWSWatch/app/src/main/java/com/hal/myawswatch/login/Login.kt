@@ -106,10 +106,10 @@ fun DarkThemePreview(){
 fun Header(){
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp)
+        modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp)
     ){
         Text(text = "Sign in to your account",
-            style = TextStyle(fontSize = 24.sp,
+            style = TextStyle(fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary))
     }
@@ -123,6 +123,7 @@ fun Contents(){
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
+            .fillMaxHeight(0.75f)
             .padding(16.dp)
             .background(MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(16.dp),
@@ -227,7 +228,7 @@ fun LoginArea(){
                 pressedElevation = 32.dp,
                 disabledElevation = 0.dp
             ),
-            modifier = Modifier.fillMaxWidth(0.9f),
+            modifier = Modifier.fillMaxWidth(0.9f).fillMaxHeight(0.5f),
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.secondary,
