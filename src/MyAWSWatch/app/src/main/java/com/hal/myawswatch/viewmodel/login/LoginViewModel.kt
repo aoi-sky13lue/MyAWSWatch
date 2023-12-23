@@ -65,4 +65,12 @@ class LoginViewModel @Inject constructor(
         _isSavingCredential.value = isSavingCredential
         loginRepository.setIsSavingLoginCredentials(isSavingCredential)
     }
+
+    /**
+     * ログインボタン押下時の処理
+     * */
+    fun onLoginButtonClicked() {
+        val loginCredential = loginRepository.getLoginCredentials()
+        val isSavingCredential = loginRepository.getIsSavingLoginCredentials()
+    }
 }

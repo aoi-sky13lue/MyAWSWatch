@@ -245,7 +245,7 @@ fun UserOptionArea(vm: LoginViewModel = viewModel()){
  * ログインボタン部の描画処理
  * */
 @Composable
-fun LoginArea(){
+fun LoginArea(vm: LoginViewModel = viewModel()){
     Column(Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
@@ -256,7 +256,7 @@ fun LoginArea(){
                 disabledElevation = 0.dp
             ),
             modifier = Modifier.fillMaxWidth(0.9f),
-            onClick = { /*TODO*/ },
+            onClick = { vm.onLoginButtonClicked() },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.secondary,
                 contentColor = MaterialTheme.colorScheme.onSecondary
