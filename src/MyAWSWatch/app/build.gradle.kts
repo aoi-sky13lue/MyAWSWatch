@@ -58,6 +58,7 @@ dependencies {
     val jUnitVersion = "4.13.2"
     val extJUnitVersion = "1.1.5"
     val espressoVersion = "3.5.1"
+    val viewModelComposeVersion = "2.5.1"
 
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.core:core-ktx:$coreKtxVersion")
@@ -70,6 +71,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("com.airbnb.android:lottie-compose:$lottieVersion")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelComposeVersion")
     testImplementation("junit:junit:$jUnitVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJUnitVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
