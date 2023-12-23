@@ -33,10 +33,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hal.myawswatch.viewmodel.login.LoginViewModel
 import com.hal.myawswatch.view.login.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * LoginActivityクラス
  * */
+@AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
     /**
      * アクティビティのライフサイクル内で初めて呼び出されるメソッド。

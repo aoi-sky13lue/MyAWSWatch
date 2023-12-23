@@ -4,15 +4,10 @@ import com.hal.myawswatch.arch.login.LoginArch
 import javax.inject.Inject
 
 /**
- * ログイン画面のリポジトリクラス
- *
- * @param loginRDS ログイン画面のリモートデータソースクラス
- * @param loginLDS ログイン画面のローカルデータソースクラス
+ * ログイン画面のローカルデータソースクラス
  * */
-class LoginRepository @Inject constructor(
-    private val loginRDS: LoginRDS,
-    private val loginLDS: LoginLDS
-) {
+class LoginLDS @Inject constructor(){
+    private lateinit var loginCredential : LoginArch.LoginCredential
 
     /**
      * ログイン情報を設定する
@@ -21,7 +16,7 @@ class LoginRepository @Inject constructor(
      * @param password パスワード
      * */
     fun setLoginCredentials(email: String, password: String) {
-        loginLDS.setLoginCredentials(email, password)
+        loginCredential = LoginArch.LoginCredential(email, password)
     }
 
     /**
@@ -30,6 +25,6 @@ class LoginRepository @Inject constructor(
      * @return ログイン情報
      * */
     fun getLoginCredentials(): LoginArch.LoginCredential {
-        return loginLDS.getLoginCredentials()
+        return loginCredential
     }
 }
