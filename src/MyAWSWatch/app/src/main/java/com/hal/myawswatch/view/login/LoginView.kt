@@ -217,7 +217,8 @@ fun UserInputField(placeholderText: String,
  * ユーザーが任意で選択できるオプションエリアの描画処理
  * */
 @Composable
-fun UserOptionArea(){
+fun UserOptionArea(vm: LoginViewModel = viewModel()){
+    val isSavingCredential by viewModel<LoginViewModel>().isSavingCredential.collectAsState()
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -228,8 +229,8 @@ fun UserOptionArea(){
             horizontalArrangement = Arrangement.Center, // この行を追加
             verticalAlignment = Alignment.CenterVertically
         ){
-            Checkbox(checked = false,
-                onCheckedChange = {},
+            Checkbox(checked = isSavingCredential,
+                onCheckedChange = {vm.setIsSavingCredential(it)},
                 colors = CheckboxDefaults.colors(
                     checkedColor = MaterialTheme.colorScheme.primary,
                     uncheckedColor = MaterialTheme.colorScheme.primary)

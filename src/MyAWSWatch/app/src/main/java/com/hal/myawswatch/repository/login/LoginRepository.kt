@@ -32,4 +32,22 @@ class LoginRepository @Inject constructor(
     fun getLoginCredentials(): LoginArch.LoginCredential {
         return loginLDS.getLoginCredentials()
     }
+
+    /**
+     * ログイン情報を保存するかどうかを設定する
+     *
+     * @param isSavingCredential ログイン情報を保存するかどうか
+     * */
+    fun setIsSavingLoginCredentials(isSavingCredential: Boolean){
+        loginLDS.setIsSavingCredential(isSavingCredential)
+    }
+
+    /**
+     * ログイン情報を保存するかどうかを取得する
+     *
+     * @return ログイン情報を保存するかどうか
+     * */
+    fun getIsSavingLoginCredentials(): Boolean {
+        return loginLDS.getIsSavingCredential()
+    }
 }

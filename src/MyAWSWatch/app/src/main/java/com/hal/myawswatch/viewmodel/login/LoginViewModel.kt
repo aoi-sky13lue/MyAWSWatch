@@ -19,6 +19,7 @@ class LoginViewModel @Inject constructor(
 ): ViewModel() {
     private val _email = MutableStateFlow("")
     private val _password = MutableStateFlow("")
+    private val _isSavingCredential = MutableStateFlow(false)
 
     /**
      * ログイン用メールアドレス
@@ -31,17 +32,18 @@ class LoginViewModel @Inject constructor(
     val password: StateFlow<String> = _password.asStateFlow()
 
     /**
+     * ログイン情報を保存するかどうか
+     * */
+    val isSavingCredential: StateFlow<Boolean> = _isSavingCredential.asStateFlow()
+
+    /**
      * メールアドレスを更新する
      *
      * @param newEmail 新しいメールアドレス
      * */
-    fun setEmail(newEmail: String?){
-        newEmail.let {
-            if(it == null)
-                return@let
-            _email.value = it
-            loginRepository.setLoginCredentials(it, _password.value)
-        }
+    fun setEmail(newEmail: String){
+        _email.value = newEmail
+        loginRepository.setLoginCredentials(newEmail, _password.value)
     }
 
     /**
@@ -49,12 +51,18 @@ class LoginViewModel @Inject constructor(
      *
      * @param newPassword 新しいパスワード
      * */
-    fun setPassword(newPassword: String?) {
-        newPassword.let {
-            if(it == null)
-                return@let
-            _password.value = it
-            loginRepository.setLoginCredentials(_email.value, it)
-        }
+    fun setPassword(newPassword: String) {
+        _password.value = newPassword
+        loginRepository.setLoginCredentials(_email.value, newPassword)
+    }
+
+    /**
+     * ログイン情報を保存するかどうかを更新する
+     *
+     * @param isSavingCredential ログイン情報を保存するかどうか
+     * */
+    fun setIsSavingCredential(isSavingCredential: Boolean) {
+        _isSavingCredential.value = isSavingCredential
+        loginRepository.setIsSavingLoginCredentials(isSavingCredential)
     }
 }
