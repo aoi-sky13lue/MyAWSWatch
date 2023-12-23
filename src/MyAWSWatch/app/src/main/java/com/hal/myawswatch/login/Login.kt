@@ -159,9 +159,9 @@ fun UserFieldArea(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        UserInputField(placeholderText = "Enter your email")
+        UserInputField(placeholderText = "Email")
         Spacer(modifier = Modifier.height(24.dp))
-        UserInputField(placeholderText = "Enter your password")
+        UserInputField(placeholderText = "Password")
     }
 }
 
