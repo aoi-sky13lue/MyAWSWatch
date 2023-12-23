@@ -1,4 +1,4 @@
-package com.hal.myawswatch.splash.ui.theme
+package com.hal.myawswatch.view.login.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

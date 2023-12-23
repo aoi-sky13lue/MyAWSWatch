@@ -1,4 +1,4 @@
-package com.hal.myawswatch.splash
+package com.hal.myawswatch.view.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,8 +17,8 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.hal.myawswatch.R
-import com.hal.myawswatch.login.LoginActivity
-import com.hal.myawswatch.splash.ui.theme.MyAWSWatchTheme
+import com.hal.myawswatch.view.login.LoginActivity
+import com.hal.myawswatch.view.splash.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

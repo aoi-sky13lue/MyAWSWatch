@@ -1,4 +1,4 @@
-package com.hal.myawswatch.splash.ui.theme
+package com.hal.myawswatch.view.splash.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.hal.myawswatch.login.ui.theme
+package com.hal.myawswatch.view.login.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

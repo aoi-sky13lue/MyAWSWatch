@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAWSWatch">
         <activity
-            android:name=".splash.Splash"
+            android:name=".view.splash.Splash"
             android:exported="true"
             android:theme="@style/Theme.Splash">
             <intent-filter>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.LoginActivity">
+            android:name=".view.login.LoginActivity">
         </activity>
     </application>
 

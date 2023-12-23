@@ -1,4 +1,4 @@
-package com.hal.myawswatch.login
+package com.hal.myawswatch.view.login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -30,7 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.hal.myawswatch.login.ui.theme.MyAWSWatchTheme
+import com.hal.myawswatch.viewmodel.login.LoginViewModel
+import com.hal.myawswatch.view.login.ui.theme.MyAWSWatchTheme
 import com.hal.myawswatch.utils.SysUiUtils
 
 /**

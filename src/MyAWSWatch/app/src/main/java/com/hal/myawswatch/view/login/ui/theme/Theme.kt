@@ -1,4 +1,4 @@
-package com.hal.myawswatch.login.ui.theme
+package com.hal.myawswatch.view.login.ui.theme
 
 import android.app.Activity
 import android.os.Build

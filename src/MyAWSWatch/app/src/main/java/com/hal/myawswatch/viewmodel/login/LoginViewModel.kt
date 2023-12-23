@@ -1,4 +1,4 @@
-package com.hal.myawswatch.login
+package com.hal.myawswatch.viewmodel.login
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
