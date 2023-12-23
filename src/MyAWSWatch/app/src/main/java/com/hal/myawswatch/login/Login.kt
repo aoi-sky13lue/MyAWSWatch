@@ -52,7 +52,6 @@ class LoginActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
                 ) {
                     Draw()
                 }
@@ -175,7 +174,6 @@ fun UserFieldArea(){
 @Composable
 fun UserInputField(placeholderText: String){
     Row(
-        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -235,7 +233,7 @@ fun LoginArea(){
                 pressedElevation = 32.dp,
                 disabledElevation = 0.dp
             ),
-            modifier = Modifier.fillMaxWidth(0.9f).fillMaxHeight(0.5f),
+            modifier = Modifier.fillMaxWidth(0.9f),
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.secondary,
