@@ -59,6 +59,7 @@ dependencies {
     val lifeCycleRuntimeVersion = "2.6.2"
     val activityComposeVersion = "1.7.2"
     val jUnitVersion = "4.13.2"
+    val mockitoVersion = "5.2.1"
     val extJUnitVersion = "1.1.5"
     val espressoVersion = "3.5.1"
     val viewModelComposeVersion = "2.5.1"
@@ -79,6 +80,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
     testImplementation("junit:junit:$jUnitVersion")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJUnitVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
